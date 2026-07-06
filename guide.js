@@ -7,7 +7,8 @@
    An externally hosted file is immune — BD only links to it, it can't edit it.
 
    HOW TO USE ON /guide (three tiny pieces, none of which BD can break):
-     1. BODY (HTML/code block):  <div id="vegan-restaurant-guide"></div>
+     1. BODY (HTML/code block):  <div id="vegan-restaurant-guide">Loading the vegan guide…</div>
+        (Give it text — BD strips EMPTY divs on save. guide.js replaces the text.)
      2. HEAD TAGS slot:          the SEO JSON-LD from SVG_Guide_HeadTags.html
                                  (the icon font is injected by this file, so the
                                   <link> is optional there now).
@@ -86,8 +87,8 @@
     '<div class="guide-head">' +
     '  <div class="guide-mark"><i class="ti ti-leaf"></i></div>' +
     '  <div>' +
-    '    <h1>Seattle vegan restaurant guide</h1>' +
-    '    <div class="subtitle">26 all-vegan spots · Capitol Hill to Everett</div>' +
+    '    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>' +
+    '    <div class="subtitle">26 all-vegan spots · Greater Seattle Metro</div>' +
     '  </div>' +
     '</div>' +
     '<input type="text" id="svg-guide-search" placeholder="Search restaurants…" />' +
