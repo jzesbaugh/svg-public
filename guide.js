@@ -142,7 +142,7 @@
     if (!document.querySelector('link[rel="apple-touch-icon"]')) {
       var ati = document.createElement('link');
       ati.rel = 'apple-touch-icon';
-      ati.href = 'https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/icons/icon-180.png';
+      ati.href = 'https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/icon-180.png';
       document.head.appendChild(ati);
     }
     if (!document.querySelector('meta[name="theme-color"]')) {
