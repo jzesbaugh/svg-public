@@ -11,7 +11,8 @@ Maintained by [Seattle Vegan Group](https://www.seattlevegangroup.org). Free to 
 - Filter by **area** (12 neighborhood zones) or **cuisine**.
 - Free-text search across names, cuisines, neighborhoods, and addresses.
 - Each card links to the restaurant's website, phone, Google reviews, and social pages.
-- Self-contained: it injects its own styles and icon font, so there is nothing else to install.
+- Self-contained: it injects its own styles, icon font, and PWA manifest/home-screen icons, so there is nothing else to install.
+- On mobile, a "Save this guide" line offers Android's "Add to home screen" and an iPhone bookmark shortcut, each with a tap-to-expand instruction.
 
 > **Beta.** The data is verified by hand but the world changes. If you spot a wrong address, an old phone number, a closed spot, or a place we missed, email **info@seattlevegangroup.org**.
 
