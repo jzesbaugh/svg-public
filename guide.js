@@ -31,6 +31,13 @@
   #vegan-restaurant-guide h1 { font-size: 21px; font-weight: 600; color: #0d3a2c; line-height: 1.1; }
   #vegan-restaurant-guide .subtitle { font-size: 12px; color: #9a8f7c; margin-top: 3px; }
 
+  #vegan-restaurant-guide .save-line { display: none; font-size: 11px; color: #9a8f7c; margin-bottom: 14px; line-height: 1.6; }
+  #vegan-restaurant-guide .save-line a { color: #c4603d; text-decoration: none; }
+  #vegan-restaurant-guide .save-line a:hover { text-decoration: underline; }
+  #vegan-restaurant-guide .save-instr { display: none; font-size: 11px; color: #5c5547; background: #fff; border: 1px solid #e3d9c6; border-radius: 7px; padding: 7px 10px; margin-top: 4px; }
+  #vegan-restaurant-guide .save-instr.open { display: block; }
+  @media (max-width: 640px) { #vegan-restaurant-guide .save-line { display: block; } }
+
   #vegan-restaurant-guide input[type="text"] { width: 100%; padding: 9px 13px; border: 1px solid #e3d9c6; border-radius: 9px; font-size: 14px; background: #fff; margin-bottom: 1.1rem; outline: none; color: #23201a; }
   #vegan-restaurant-guide input[type="text"]:focus { border-color: #1d8a6b; box-shadow: 0 0 0 3px rgba(29,138,107,0.13); }
   #vegan-restaurant-guide input[type="text"]::placeholder { color: #b3a892; }
@@ -91,6 +98,11 @@
     '    <div class="subtitle">26 all-vegan spots · Greater Seattle Metro</div>' +
     '  </div>' +
     '</div>' +
+    '<div class="save-line" id="svg-guide-save">' +
+    '  Save this guide: <a href="#" class="save-link" data-target="android">Add to home screen (Android)</a> · <a href="#" class="save-link" data-target="ios">Bookmark this page (iPhone)</a>' +
+    '  <div class="save-instr" id="svg-guide-instr-android">In Chrome, tap <i class="ti ti-dots-vertical" aria-hidden="true"></i> top right → "Add to Home screen."</div>' +
+    '  <div class="save-instr" id="svg-guide-instr-ios">In Safari, tap <i class="ti ti-share-2" aria-hidden="true"></i> Share → "Add to Home Screen."</div>' +
+    '</div>' +
     '<input type="text" id="svg-guide-search" placeholder="Search restaurants…" />' +
     '<div class="tabs">' +
     '  <div class="tab active" id="svg-guide-tab-hood" data-tab="hood">Area</div>' +
@@ -99,7 +111,7 @@
     '<div class="filter-row" id="svg-guide-filters"></div>' +
     '<div class="results-meta" id="svg-guide-meta"></div>' +
     '<div id="svg-guide-cards"></div>' +
-    '<div class="guide-foot">Last updated July 5, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a></div>';
+    '<div class="guide-foot">Last updated July 5, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
 
   function boot() {
     var root = document.getElementById('vegan-restaurant-guide');
@@ -120,8 +132,51 @@
       st.textContent = CSS;
       document.head.appendChild(st);
     }
+    // Inject manifest + home-screen icon tags once (for "save this guide")
+    if (!document.querySelector('link[rel="manifest"]')) {
+      var mf = document.createElement('link');
+      mf.rel = 'manifest';
+      mf.href = 'https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/manifest.json';
+      document.head.appendChild(mf);
+    }
+    if (!document.querySelector('link[rel="apple-touch-icon"]')) {
+      var ati = document.createElement('link');
+      ati.rel = 'apple-touch-icon';
+      ati.href = 'https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/icons/icon-180.png';
+      document.head.appendChild(ati);
+    }
+    if (!document.querySelector('meta[name="theme-color"]')) {
+      var tc = document.createElement('meta');
+      tc.name = 'theme-color';
+      tc.content = '#0d5c46';
+      document.head.appendChild(tc);
+    }
+    if (!document.querySelector('meta[name="apple-mobile-web-app-title"]')) {
+      var amt = document.createElement('meta');
+      amt.name = 'apple-mobile-web-app-title';
+      amt.content = 'SVG Guide';
+      document.head.appendChild(amt);
+    }
     // Build markup (search input is created here, so BD can never strip it)
     root.innerHTML = MARKUP;
+
+    // Save-this-guide click-to-expand (mobile only, via CSS; harmless no-op on desktop)
+    var saveLineEl = root.querySelector('#svg-guide-save');
+    if (saveLineEl) {
+      saveLineEl.addEventListener('click', function (e) {
+        var link = e.target.closest('.save-link');
+        if (!link) return;
+        e.preventDefault();
+        var target = link.dataset.target;
+        var androidBox = root.querySelector('#svg-guide-instr-android');
+        var iosBox = root.querySelector('#svg-guide-instr-ios');
+        var box = target === 'android' ? androidBox : iosBox;
+        var otherBox = target === 'android' ? iosBox : androidBox;
+        var isOpen = box.classList.contains('open');
+        otherBox.classList.remove('open');
+        box.classList.toggle('open', !isOpen);
+      });
+    }
 
     var restaurants = [
       { name: "Araya's Place", url: "https://www.arayasplace.com", types: ["Thai"], social: { ig: "https://instagram.com/arayasplace", fb: "https://facebook.com/ArayasVegetarianPlace" }, desc: "Classic Thai — Pad Thai, Massaman Banana Curry, Avocado Curry. Two locations.", locations: [
