@@ -95,7 +95,7 @@
     '  <div class="guide-mark"><i class="ti ti-leaf"></i></div>' +
     '  <div>' +
     '    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>' +
-    '    <div class="subtitle">26 all-vegan spots · Greater Seattle Metro</div>' +
+    '    <div class="subtitle">30 all-vegan spots · Western Washington</div>' +
     '  </div>' +
     '</div>' +
     '<div class="save-line" id="svg-guide-save">' +
@@ -111,7 +111,7 @@
     '<div class="filter-row" id="svg-guide-filters"></div>' +
     '<div class="results-meta" id="svg-guide-meta"></div>' +
     '<div id="svg-guide-cards"></div>' +
-    '<div class="guide-foot">Last updated July 5, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
+    '<div class="guide-foot">Last updated July 8, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
 
   function boot() {
     var root = document.getElementById('vegan-restaurant-guide');
@@ -198,8 +198,10 @@
         { zone: "Ballard", address: "2052 NW Market St, Seattle, WA 98107", phone: "" } ] },
       { name: "El Borracho", url: "https://www.elborracho.co", types: ["Mexican", "Bar"], social: { ig: "https://instagram.com/elborrachoseattle" }, desc: "Lively plant-based Mexican bar — tacos, burritos, nachos near Pike Place Market. All ages before 5pm; 21+ only after 5pm.", locations: [
         { zone: "Downtown / Belltown", address: "1521 1st Ave, Seattle, WA 98101", phone: "(206) 538-0144" } ] },
-      { name: "Frankie & Jo's", url: "https://frankieandjos.com", types: ["Ice Cream"], social: { ig: "https://instagram.com/frankieandjos" }, desc: "Creamy inventive plant-based ice cream with seasonal rotating flavors.", locations: [
-        { zone: "Capitol Hill / Central District", address: "1010 E Union St, Seattle, WA 98122", phone: "(206) 557-4603" } ] },
+      { name: "Frankie & Jo's", url: "https://frankieandjos.com", types: ["Ice Cream"], social: { ig: "https://instagram.com/frankieandjos" }, desc: "Creamy inventive plant-based ice cream with seasonal rotating flavors. Three Seattle scoop shops.", locations: [
+        { zone: "Capitol Hill / Central District", address: "1010 E Union St, Seattle, WA 98122", phone: "(206) 557-4603" },
+        { zone: "Ballard", address: "1411 NW 70th St, Seattle, WA 98117", phone: "(206) 257-1676" },
+        { zone: "U-District", address: "4619 Village Terrace Dr NE, Seattle, WA 98105", phone: "(206) 453-3135" } ] },
       { name: "Georgetown Liquor Co.", url: "https://glcseattle.com", types: ["American", "Bar"], social: { ig: "https://instagram.com/glcseattle" }, desc: "Punk bar with all-vegan pub grub — burgers, tacos, nachos, local brews. 21+ only.", locations: [
         { zone: "Georgetown", address: "5501 Airport Way S Ste B, Seattle, WA 98108", phone: "(206) 402-5367" } ] },
       { name: "Harvest Beat", url: "https://www.harvestbeat.com", types: ["Fine Dining"], social: { ig: "https://instagram.com/harvestbeat_", fb: "https://facebook.com/HarvestBeatSutra" }, desc: "Seasonal 5-course prix-fixe tasting menu built around Pacific Northwest produce. Reservations strongly recommended; single evening seating.", locations: [
@@ -239,7 +241,15 @@
       { name: "Cafe Wylde", url: "https://www.cafewylde.com/", types: ["Café"], social: { ig: "https://instagram.com/cafewylde", fb: "https://www.facebook.com/CafeWylde/" }, desc: "100% vegan organic café in downtown Everett. Smoothies, juices, sandwiches, tacos, burritos, grain bowls, and raw cheesecake desserts.", locations: [
         { zone: "Snohomish County", address: "2918 Hoyt Ave Suite 101, Everett, WA 98201", phone: "(425) 374-3877" } ] },
       { name: "The Bayside Cafe", url: "https://thebaysidecafe.com/", types: ["Café", "Bar"], social: { ig: "https://instagram.com/the_bayside_cafe", fb: "https://www.facebook.com/thebaysidecafeeverett/" }, desc: "100% plant-based café in downtown Everett — burgers, hot dogs, sandwiches, nachos — with craft beers. Best Vegan Restaurant 2024.", locations: [
-        { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] }
+        { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] },
+      { name: "Quickie Too", url: "https://quickietoo.com", types: ["Soul Food"], social: { ig: "https://instagram.com/quickietootacoma", fb: "https://www.facebook.com/Quickie-Too-210575445619965" }, desc: "Tacoma's Hilltop vegan soul food institution — hearty burgers, wraps, and sandwiches plus pizza, salads, milkshakes, and sweet potato pie.", locations: [
+        { zone: "Tacoma / Pierce County", address: "1324 Martin Luther King Jr Way, Tacoma, WA 98405", phone: "(253) 572-4549" } ] },
+      { name: "Three Cats Coffee", url: "https://threecatscoffee.square.site", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
+        { zone: "Eastside", address: "17410 133rd Ave NE Ste 101, Woodinville, WA 98072", phone: "(360) 447-8341" } ] },
+      { name: "Nuttea", url: "https://nuttea-seattle.com", types: ["Bubble Tea"], social: { ig: "https://instagram.com/nuttea_seattle" }, desc: "Taiwanese nut-mylk boba — 100% vegan milk teas made with house-ground nut mylk, nut-cream-topped teas, fruit teas, and vegan macarons.", locations: [
+        { zone: "Eastside", address: "16180 NE 80th St Suite 100, Redmond, WA 98052", phone: "(425) 305-5636" } ] },
+      { name: "Juicy J's Smoked Burgers", url: "https://smokedburgers.com", types: ["American", "Fast Casual"], social: { ig: "https://instagram.com/juicyjsmokedburgers", fb: "https://www.facebook.com/104159695794456" }, desc: "Family-owned 100% plant-based burger shack on the Poulsbo waterfront — in-house smoked patties, Western BBQ Bacon Cheeseburger, and chili cheese fries. Closed Mondays.", locations: [
+        { zone: "Kitsap Peninsula", address: "18779 Front St NE, Poulsbo, WA 98370", phone: "(360) 626-1934" } ] }
     ];
 
     // Cuisine -> plant-based / neutral icon + color family (NO animal or meat icons)
@@ -262,6 +272,7 @@
       "Bakery":       { i: "ti-cake", c: "rose" },
       "Ice Cream":    { i: "ti-ice-cream", c: "rose" },
       "Café":         { i: "ti-coffee", c: "gold" },
+      "Bubble Tea":   { i: "ti-cup", c: "gold" },
       "Bar":          { i: "ti-glass-full", c: "gold" },
       "American":     { i: "ti-tools-kitchen-2", c: "green" },
       "Soul Food":    { i: "ti-tools-kitchen-2", c: "green" },
@@ -277,7 +288,7 @@
     var ZONE_ORDER = [
       "Capitol Hill / Central District", "Downtown / Belltown", "South Lake Union", "U-District",
       "Fremont & Wallingford", "Ballard", "Rainier Valley", "Georgetown", "West Seattle",
-      "Eastside", "South King County", "Snohomish County"
+      "Eastside", "South King County", "Tacoma / Pierce County", "Kitsap Peninsula", "Snohomish County"
     ];
     var zones = ZONE_ORDER.filter(function (z) { return restaurants.some(function (r) { return r.locations.some(function (l) { return l.zone === z; }); }); });
     var types = [];
