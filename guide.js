@@ -99,7 +99,7 @@
     '  </div>' +
     '</div>' +
     '<div class="save-line" id="svg-guide-save">' +
-    '  Save this guide: <a href="#" class="save-link" data-target="android">Add to home screen (Android)</a> · <a href="#" class="save-link" data-target="ios">Bookmark this page (iPhone)</a>' +
+    '  Save this guide: <a href="#" class="save-link" data-target="android">Add to home screen (Android)</a> · <a href="#" class="save-link" data-target="ios">Add to home screen (iPhone)</a>' +
     '  <div class="save-instr" id="svg-guide-instr-android">In Chrome, tap <i class="ti ti-dots-vertical" aria-hidden="true"></i> top right → "Add to Home screen."</div>' +
     '  <div class="save-instr" id="svg-guide-instr-ios">In Safari, tap <i class="ti ti-share-2" aria-hidden="true"></i> Share → "Add to Home Screen."</div>' +
     '</div>' +
