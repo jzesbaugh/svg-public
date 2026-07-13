@@ -7,8 +7,8 @@ Maintained by [Seattle Vegan Group](https://www.seattlevegangroup.org). Free to 
 
 ## What it does
 
-- Lists every fully vegan restaurant we can verify in the region (currently 26).
-- Filter by **area** (12 neighborhood zones) or **cuisine**.
+- Lists every fully vegan restaurant we can verify in the region (currently 28).
+- Filter by **area** (14 neighborhood zones) or **cuisine**.
 - Free-text search across names, cuisines, neighborhoods, and addresses.
 - Each card links to the restaurant's website, phone, Google reviews, and social pages.
 - Self-contained: it injects its own styles, icon font, and PWA manifest/home-screen icons, so there is nothing else to install.

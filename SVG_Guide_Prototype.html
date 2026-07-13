@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Restaurant Guide — Filter Prototype</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="manifest" href="https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/manifest.json">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/icon-180.png">
+<meta name="theme-color" content="#0d5c46">
+<meta name="apple-mobile-web-app-title" content="SVG Guide">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #faf6ef; color: #23201a; padding: 1.5rem; max-width: 720px; margin: 0 auto; }
+
+  .guide-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .guide-mark { width: 44px; height: 44px; border-radius: 12px; background: #0d5c46; color: #bfe6d6; display: flex; align-items: center; justify-content: center; font-size: 23px; flex-shrink: 0; }
+  h1 { font-size: 21px; font-weight: 600; color: #0d3a2c; line-height: 1.1; }
+  .subtitle { font-size: 12px; color: #9a8f7c; margin-top: 3px; }
+
+  .save-line { display: none; font-size: 11px; color: #9a8f7c; margin-bottom: 14px; line-height: 1.6; }
+  .save-line a { color: #c4603d; text-decoration: none; }
+  .save-line a:hover { text-decoration: underline; }
+  .save-instr { display: none; font-size: 11px; color: #5c5547; background: #fff; border: 1px solid #e3d9c6; border-radius: 7px; padding: 7px 10px; margin-top: 4px; }
+  .save-instr.open { display: block; }
+  @media (max-width: 640px) { .save-line { display: block; } }
+
+  .dev-note { background: #fbf0e3; border: 1px solid #ecdcc6; border-radius: 10px; padding: 10px 14px; font-size: 12px; color: #7a4a28; margin-bottom: 1.25rem; line-height: 1.5; }
+  .dev-note strong { font-weight: 600; }
+
+  input[type="text"] { width: 100%; padding: 9px 13px; border: 1px solid #e3d9c6; border-radius: 9px; font-size: 14px; background: #fff; margin-bottom: 1.1rem; outline: none; color: #23201a; }
+  input[type="text"]:focus { border-color: #1d8a6b; box-shadow: 0 0 0 3px rgba(29,138,107,0.13); }
+  input[type="text"]::placeholder { color: #b3a892; }
+
+  .tabs { display: flex; margin-bottom: 1rem; border: 1px solid #e3d9c6; border-radius: 9px; overflow: hidden; background: #fff; }
+  .tab { flex: 1; padding: 8px 12px; font-size: 13px; text-align: center; cursor: pointer; color: #6b6453; transition: all 0.12s; user-select: none; }
+  .tab:first-child { border-right: 1px solid #e3d9c6; }
+  .tab.active { background: #0d5c46; color: #fff; font-weight: 500; }
+
+  .filter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.4rem; }
+  .chip { font-size: 13px; padding: 5px 13px; border-radius: 999px; border: 1px solid #e3d9c6; background: #fff; color: #6b6453; cursor: pointer; transition: all 0.12s; user-select: none; }
+  .chip:hover { border-color: #c4603d; color: #c4603d; }
+  .chip.active { background: #c4603d; border-color: #c4603d; color: #fff; font-weight: 500; }
+
+  .results-meta { font-size: 13px; color: #9a8f7c; margin-bottom: 12px; }
+
+  .card { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 11px; box-shadow: 0 1px 3px rgba(40,30,10,0.06), 0 0 1px rgba(40,30,10,0.04); display: flex; gap: 12px; }
+  .card-ico { width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+  .card-body { flex: 1; min-width: 0; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+  .card-name { font-size: 17px; font-weight: 500; line-height: 1.25; }
+  .card-name a { color: #23201a; text-decoration: none; }
+  .card-name a:hover { color: #1d8a6b; }
+  .tag-row { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .card-locations { display: flex; flex-direction: column; gap: 6px; margin: 6px 0 9px; }
+  .loc-line { font-size: 12px; }
+  .loc-zone { display: block; color: #1d8a6b; font-weight: 500; margin-bottom: 1px; }
+  .loc-addr-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .loc-addr { color: #a89c86; }
+  .card-phone { font-size: 12px; font-weight: 500; color: #0d5c46; background: #e3f1ea; border: 1px solid #c4e3d4; padding: 2px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+  .card-phone:hover { background: #d3ebdf; }
+  .card-desc { font-size: 13px; color: #5c5547; line-height: 1.5; margin-bottom: 10px; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .website-link { font-size: 13px; font-weight: 500; color: #1d8a6b; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+  .website-link:hover { color: #0d5c46; text-decoration: underline; }
+  .footer-left { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .reviews-link { font-size: 13px; font-weight: 500; color: #5c5547; display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+  .reviews-link:hover { color: #23201a; }
+  .reviews-link .ti-brand-google { color: #4285F4; }
+  .social-links { display: flex; gap: 7px; }
+  .social-link { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; color: #fff; transition: transform 0.12s, opacity 0.12s; flex-shrink: 0; }
+  .social-link:hover { transform: scale(1.12); opacity: 0.9; }
+  .social-link--ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+  .social-link--fb { background: #1877f2; }
+  .empty { text-align: center; padding: 2rem; color: #b3a892; font-size: 14px; }
+
+  .guide-foot { font-size: 12px; color: #9a8f7c; text-align: center; margin-top: 1.75rem; padding-top: 1rem; border-top: 1px solid #ecdcc6; line-height: 1.6; }
+  .guide-foot a { color: #c4603d; text-decoration: none; }
+  .guide-foot a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="guide-head">
+  <div class="guide-mark"><i class="ti ti-leaf"></i></div>
+  <div>
+    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>
+    <div class="subtitle">28 all-vegan spots · Western Washington</div>
+  </div>
+</div>
+
+<div class="save-line" id="save-line">
+  Save this guide: <a href="#" onclick="toggleSave('android'); return false;">Add to home screen (Android)</a> · <a href="#" onclick="toggleSave('ios'); return false;">Add to home screen (iPhone)</a>
+  <div class="save-instr" id="save-instr-android">In Chrome, tap <i class="ti ti-dots-vertical" aria-hidden="true"></i> top right → "Add to Home screen."</div>
+  <div class="save-instr" id="save-instr-ios">In Safari, tap <i class="ti ti-share-2" aria-hidden="true"></i> Share → "Add to Home Screen."</div>
+</div>
+
+<div class="dev-note">
+  <strong>Work in progress.</strong> Visual pass: warm palette, per-cuisine icons (all plant-based / neutral — no animals), clay accent. 12-zone map; verified socials (Dough Joy's Facebook unconfirmed). Next: sync to main site (SVG_VeganGuide.html).
+</div>
+
+<input type="text" id="search" placeholder="Search restaurants…" oninput="render()" />
+
+<div class="tabs">
+  <div class="tab active" id="tab-hood" onclick="switchTab('hood')">Area</div>
+  <div class="tab" id="tab-type" onclick="switchTab('type')">Cuisine</div>
+</div>
+
+<div class="filter-row" id="filters"></div>
+<div class="results-meta" id="meta"></div>
+<div id="cards"></div>
+
+<div class="guide-foot">Last updated July 12, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank">View the code &amp; data</a></div>
+
+<script>
+function toggleSave(target) {
+  const android = document.getElementById("save-instr-android");
+  const ios = document.getElementById("save-instr-ios");
+  const box = target === "android" ? android : ios;
+  const other = target === "android" ? ios : android;
+  const isOpen = box.classList.contains("open");
+  other.classList.remove("open");
+  box.classList.toggle("open", !isOpen);
+}
+const restaurants = [
+  { name: "Araya's Place", url: "https://www.arayasplace.com", types: ["Thai"], social: { ig: "https://instagram.com/arayasplace", fb: "https://facebook.com/ArayasVegetarianPlace" }, desc: "Classic Thai — Pad Thai, Massaman Banana Curry, Avocado Curry. Two locations.", locations: [
+    { zone: "U-District", address: "5240 University Way NE, Seattle, WA 98105", phone: "(206) 524-4332" },
+    { zone: "Eastside", address: "10246 Main St Ste C, Bellevue, WA 98004", phone: "(425) 454-2440" } ] },
+  { name: "The Bayside Cafe", url: "https://thebaysidecafe.com/", types: ["Café", "Bar"], social: { ig: "https://instagram.com/the_bayside_cafe", fb: "https://www.facebook.com/thebaysidecafeeverett/" }, desc: "100% plant-based café in downtown Everett — burgers, hot dogs, sandwiches, nachos — with craft beers. Best Vegan Restaurant 2024.", locations: [
+    { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] },
+  { name: "Box Bar", url: "https://boxbarseattle.com", types: ["American", "Bar"], social: {}, desc: "Casual plant-based brunch, dinner, and crafted cocktails. 21+ only.", locations: [
+    { zone: "West Seattle", address: "5401 California Ave SW, Seattle, WA", phone: "(206) 432-9554" } ] },
+  { name: "Brown Sugar Baking Co.", url: "https://brownsugarbakingcompany.com", types: ["Bakery"], social: { ig: "https://instagram.com/brownsugarbaking", fb: "https://facebook.com/BSBCO" }, desc: "Black woman-owned vegan bakery. Cinnamon buns, brownies, custom event cakes.", locations: [
+    { zone: "Capitol Hill / Central District", address: "308 22nd Ave S Ste 101, Seattle, WA 98144", phone: "(206) 556-0749" } ] },
+  { name: "Cafe Red", url: "https://caferedseattle.com", types: ["Café"], social: { ig: "https://instagram.com/caferedseattle", fb: "https://facebook.com/caferedseattle" }, desc: "All-vegan café with artisanal coffee, breakfast sandwiches, burritos, mac & cheese.", locations: [
+    { zone: "Rainier Valley", address: "7148 Martin Luther King Jr Way S, Seattle, WA 98118", phone: "(206) 257-1267" } ] },
+  { name: "Cafe Wylde", url: "https://www.cafewylde.com/", types: ["Café"], social: { ig: "https://instagram.com/cafewylde", fb: "https://www.facebook.com/CafeWylde/" }, desc: "100% vegan organic café in downtown Everett. Smoothies, juices, sandwiches, tacos, burritos, grain bowls, and raw cheesecake desserts.", locations: [
+    { zone: "Snohomish County", address: "2918 Hoyt Ave Suite 101, Everett, WA 98201", phone: "(425) 374-3877" } ] },
+  { name: "Chu Minh Tofu & Vegan Deli", url: "https://chuminhtofu.com", types: ["Vietnamese"], social: { ig: "https://instagram.com/chuminhtofu", fb: "https://facebook.com/chuminhtofu" }, desc: "Vietnamese deli, all-you-can-eat buffet, pho, banh mi. Two locations.", locations: [
+    { zone: "Capitol Hill / Central District", address: "1043 S Jackson St, Seattle, WA 98104", phone: "(206) 723-6095" },
+    { zone: "Rainier Valley", address: "6754 Martin Luther King Jr Way S, Seattle, WA 98118", phone: "(206) 457-4469" } ] },
+  { name: "Cinnaholic", url: "https://www.cinnaholicseattle.com/", types: ["Bakery"], social: { ig: "https://instagram.com/cinnaholicseattle", fb: "https://www.facebook.com/Cinnaholic.Seattle.CapitolHill/" }, desc: "100% vegan cinnamon roll bakery. Customize rolls with frosting flavors (cream cheese, almond, lemon, marshmallow) and toppings. Featured on Shark Tank.", locations: [
+    { zone: "Capitol Hill / Central District", address: "816 E Pike St, Seattle, WA 98122", phone: "(206) 922-3253" } ] },
+  { name: "Dough Joy Donuts", url: "https://www.doughjoydonuts.com", types: ["Bakery"], social: { ig: "https://instagram.com/doughjoydonuts", fb: "https://facebook.com/doughjoydonuts" }, desc: "Colorful vegan donuts with creative rotating flavors and espresso at each location.", locations: [
+    { zone: "West Seattle", address: "4310 SW Oregon St, Seattle, WA 98116", phone: "(323) 739-8112" },
+    { zone: "Ballard", address: "2052 NW Market St, Seattle, WA 98107", phone: "" } ] },
+  { name: "El Borracho", url: "https://www.elborracho.co", types: ["Mexican", "Bar"], social: { ig: "https://instagram.com/elborrachoseattle" }, desc: "Lively plant-based Mexican bar — tacos, burritos, nachos near Pike Place Market. All ages before 5pm; 21+ only after 5pm.", locations: [
+    { zone: "Downtown / Belltown", address: "1521 1st Ave, Seattle, WA 98101", phone: "(206) 538-0144" } ] },
+  { name: "Frankie & Jo's", url: "https://frankieandjos.com", types: ["Ice Cream"], social: { ig: "https://instagram.com/frankieandjos" }, desc: "Creamy inventive plant-based ice cream with seasonal rotating flavors. Three Seattle scoop shops.", locations: [
+    { zone: "Capitol Hill / Central District", address: "1010 E Union St, Seattle, WA 98122", phone: "(206) 557-4603" },
+    { zone: "Ballard", address: "1411 NW 70th St, Seattle, WA 98117", phone: "(206) 257-1676" },
+    { zone: "U-District", address: "4619 Village Terrace Dr NE, Seattle, WA 98105", phone: "(206) 453-3135" } ] },
+  { name: "Georgetown Liquor Co.", url: "https://glcseattle.com", types: ["American", "Bar"], social: { ig: "https://instagram.com/glcseattle" }, desc: "Punk bar with all-vegan pub grub — burgers, tacos, nachos, local brews. 21+ only.", locations: [
+    { zone: "Georgetown", address: "5501 Airport Way S Ste B, Seattle, WA 98108", phone: "(206) 402-5367" } ] },
+  { name: "Harvest Beat", url: "https://www.harvestbeat.com", types: ["Fine Dining"], social: { ig: "https://instagram.com/harvestbeat_", fb: "https://facebook.com/HarvestBeatSutra" }, desc: "Seasonal 5-course prix-fixe tasting menu built around Pacific Northwest produce. Reservations strongly recommended; single evening seating.", locations: [
+    { zone: "Fremont & Wallingford", address: "1711 N 45th St, Seattle, WA 98103", phone: "(206) 547-1348" } ] },
+  { name: "Juicy J's Smoked Burgers", url: "https://smokedburgers.com", types: ["American", "Fast Casual"], social: { ig: "https://instagram.com/juicyjsmokedburgers", fb: "https://www.facebook.com/104159695794456" }, desc: "Family-owned 100% plant-based burger shack on the Poulsbo waterfront — in-house smoked patties, Western BBQ Bacon Cheeseburger, and chili cheese fries. Closed Mondays.", locations: [
+    { zone: "Kitsap Peninsula", address: "18779 Front St NE, Poulsbo, WA 98370", phone: "(360) 626-1934" } ] },
+  { name: "Kati Vegan Thai", url: "https://kativeganthai.com", types: ["Thai"], social: { ig: "https://instagram.com/kativeganthai" }, desc: "Cauliflower Bombs, Devil Wings, Khao Soi curry, Old-Style Pad Thai.", locations: [
+    { zone: "South Lake Union", address: "1190 Thomas St, Seattle, WA 98109", phone: "(206) 900-7954" },
+    { zone: "Eastside", address: "12540 120th Ave NE Ste 110, Kirkland, WA 98034", phone: "(323) 989-1968" } ] },
+  { name: "Life on Mars", url: "https://lifeonmarsseattle.com", types: ["American", "Bar"], social: { ig: "https://instagram.com/lifeonmarsseattle" }, desc: "Plant-based cocktail bar with creative small plates and a vinyl vibe. 21+ only.", locations: [
+    { zone: "Capitol Hill / Central District", address: "722 E Pike St, Seattle, WA 98122", phone: "(206) 323-9166" } ] },
+  { name: "Moe Vegan", url: "https://www.moevegan.com/", types: ["Soul Food"], social: { ig: "https://instagram.com/moevegan", fb: "https://www.facebook.com/100057535085849/" }, desc: "Family-owned 100% vegan soul food. Bold comfort food classics reimagined plant-based. Open Thu–Sun.", locations: [
+    { zone: "South King County", address: "23325 Pacific Hwy S, Kent, WA 98032", phone: "(206) 886-4471" } ] },
+  { name: "Nuttea", url: "https://nuttea-seattle.com", types: ["Bubble Tea"], social: { ig: "https://instagram.com/nuttea_seattle" }, desc: "Taiwanese nut-mylk boba — 100% vegan milk teas made with house-ground nut mylk, nut-cream-topped teas, fruit teas, and vegan macarons.", locations: [
+    { zone: "Eastside", address: "16180 NE 80th St Suite 100, Redmond, WA 98052", phone: "(425) 305-5636" } ] },
+  { name: "Pi Vegan Pizzeria", url: "https://www.pizzapivegan.com", types: ["Pizza"], social: { ig: "https://instagram.com/pivegan", fb: "https://facebook.com/veganpizzapi" }, desc: "Mac & Cheese Pizza, Buffalo Chik'n, Artichokey Hokey Pokey. Calzones + wings.", locations: [
+    { zone: "U-District", address: "5301 Roosevelt Way NE, Seattle, WA 98105", phone: "(206) 343-1415" } ] },
+  { name: "Plantiful Superfoods", url: "https://www.plantiful.us", types: ["Café", "Fast Casual"], social: { ig: "https://instagram.com/plantifulsuperfoods", fb: "https://facebook.com/eatplantiful" }, desc: "Smoothies, superfood bowls, burgers, pizzas, acai bowls. Four locations.", locations: [
+    { zone: "Capitol Hill / Central District", address: "734 12th Ave, Seattle, WA 98122", phone: "(206) 829-6868" },
+    { zone: "South Lake Union", address: "340 Westlake Ave N, Seattle, WA 98109", phone: "(206) 687-6269" },
+    { zone: "Downtown / Belltown", address: "1405 1st Ave, Seattle, WA 98101", phone: "(206) 567-8979" },
+    { zone: "Snohomish County", address: "19723 Highway 99 Ste D, Lynnwood, WA 98036", phone: "(425) 276-6999" } ] },
+  { name: "Quickie Too", url: "https://quickietoo.com", types: ["Soul Food"], social: { ig: "https://instagram.com/quickietootacoma", fb: "https://www.facebook.com/Quickie-Too-210575445619965" }, desc: "Tacoma's Hilltop vegan soul food institution — hearty burgers, wraps, and sandwiches plus pizza, salads, milkshakes, and sweet potato pie.", locations: [
+    { zone: "Tacoma / Pierce County", address: "1324 Martin Luther King Jr Way, Tacoma, WA 98405", phone: "(253) 572-4549" } ] },
+  { name: "Rojo's Mexican Food", url: "https://www.rojosmexicanfood.com", types: ["Mexican"], social: { ig: "https://instagram.com/rojosmexicanfood" }, desc: "Fully vegan tacos, burritos, tortas, quesadillas. Fast-casual counter service.", locations: [
+    { zone: "Downtown / Belltown", address: "217 James St, Seattle, WA 98104", phone: "" } ] },
+  { name: "The Sushi Samurai", url: "https://thesushisamurai.com", types: ["Sushi"], social: { ig: "https://instagram.com/the.sushi.samurai" }, desc: "Creative plant-based sushi — inventive rolls, nigiri, and appetizers.", locations: [
+    { zone: "Downtown / Belltown", address: "1817 Queen Anne Ave N, Seattle, WA 98109", phone: "(206) 766-0298" } ] },
+  { name: "Three Cats Coffee", url: "https://threecatscoffee.square.site", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
+    { zone: "Eastside", address: "17410 133rd Ave NE Ste 101, Woodinville, WA 98072", phone: "(360) 447-8341" } ] },
+  { name: "Veggie Grill", url: "https://www.veggiegrill.com", types: ["Fast Casual"], social: { ig: "https://instagram.com/veggiegrill", fb: "https://facebook.com/veggiegrill" }, desc: "Burgers, sandwiches, bowls, salads. Go-to fast-casual vegan comfort food.", locations: [
+    { zone: "Downtown / Belltown", address: "1427 4th Ave, Seattle, WA 98101", phone: "(206) 934-1144" },
+    { zone: "U-District", address: "2681 NE University Village St, Seattle, WA 98105", phone: "(206) 962-5566" },
+    { zone: "Ballard", address: "1401 NW 46th St Suite 126, Seattle, WA 98107", phone: "(206) 800-6090" } ] },
+  { name: "Veggie Life", url: "https://www.veggielifeseattle.com", types: ["Chinese"], social: { fb: "https://www.facebook.com/profile.php?id=61576880651955" }, desc: "Plant-based Chinese restaurant with Vegetarian Peking Duck, Tofu Clay Pot, Kung Pao Tofu, General Tso's Mushrooms, and traditional noodle and rice dishes.", locations: [
+    { zone: "Eastside", address: "8518 122nd Ave NE, Kirkland, WA 98033", phone: "(206) 817-7467" } ] },
+  { name: "Vital Creations", url: "https://vitalcreationsvegancafe.com", types: ["Café"], social: { ig: "https://instagram.com/vitalcreationsveganbistro" }, desc: "Vegan café and bistro with plant-based comfort food and creative daily specials.", locations: [
+    { zone: "Fremont & Wallingford", address: "3601 Fremont Ave N Ste 207, Seattle, WA 98103", phone: "(206) 829-9619" } ] },
+  { name: "Yaygit", url: "https://yaygit.com", types: ["Café"], social: { ig: "https://instagram.com/yaygit", fb: "https://facebook.com/yaygit" }, desc: "Gut-healthy juice bar — smoothies, cold-pressed juices, faux tuna sandwiches.", locations: [
+    { zone: "Ballard", address: "5309 22nd Ave NW Suite D, Seattle, WA 98107", phone: "" } ] },
+];
+
+// Cuisine → plant-based / neutral icon + color family (NO animal or meat icons)
+const TINT = {
+  blue:  { bg: "#dcebf6", fg: "#2f6f93" },
+  clay:  { bg: "#f6e0d6", fg: "#b14e2a" },
+  rose:  { bg: "#f7e3ea", fg: "#a83d63" },
+  gold:  { bg: "#f3e3cf", fg: "#9a6b1a" },
+  green: { bg: "#dcefe4", fg: "#1d8a6b" }
+};
+const CUISINE = {
+  "Thai":         { i: "ti-soup", c: "blue" },
+  "Vietnamese":   { i: "ti-bowl", c: "blue" },
+  "Chinese":      { i: "ti-bowl", c: "blue" },
+  "Sushi":        { i: "ti-bowl", c: "blue" },
+  "Mexican":      { i: "ti-pepper", c: "clay" },
+  "Pizza":        { i: "ti-pizza", c: "clay" },
+  "Bakery":       { i: "ti-cake", c: "rose" },
+  "Ice Cream":    { i: "ti-ice-cream", c: "rose" },
+  "Café":         { i: "ti-coffee", c: "gold" },
+  "Bubble Tea":   { i: "ti-cup", c: "gold" },
+  "Bar":          { i: "ti-glass-full", c: "gold" },
+  "American":     { i: "ti-tools-kitchen-2", c: "green" },
+  "Soul Food":    { i: "ti-tools-kitchen-2", c: "green" },
+  "Fast Casual":  { i: "ti-salad", c: "green" },
+  "Fine Dining":  { i: "ti-chef-hat", c: "green" }
+};
+function cuisineOf(t) { return CUISINE[t] || { i: "ti-tools-kitchen-2", c: "green" }; }
+function tintOf(t) { return TINT[cuisineOf(t).c]; }
+function domain(u) { return u.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/.*$/, ""); }
+function gmaps(r) { const a = r.locations[0] ? r.locations[0].address : ""; return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(r.name + " " + a); }
+
+const ZONE_ORDER = [
+  "Capitol Hill / Central District", "Downtown / Belltown", "South Lake Union", "U-District",
+  "Fremont & Wallingford", "Ballard", "Rainier Valley", "Georgetown", "West Seattle",
+  "Eastside", "South King County", "Tacoma / Pierce County", "Kitsap Peninsula", "Snohomish County"
+];
+const zones = ZONE_ORDER.filter(z => restaurants.some(r => r.locations.some(l => l.zone === z)));
+const types = Array.from(new Set(restaurants.flatMap(r => r.types))).sort();
+let activeTab = "hood", activeFilter = null;
+
+function switchTab(tab) {
+  activeTab = tab; activeFilter = null;
+  document.getElementById("tab-hood").classList.toggle("active", tab === "hood");
+  document.getElementById("tab-type").classList.toggle("active", tab === "type");
+  buildFilters(); render();
+}
+function buildFilters() {
+  const items = activeTab === "hood" ? zones : types;
+  document.getElementById("filters").innerHTML = items.map(item =>
+    `<div class="chip${item === activeFilter ? " active" : ""}" onclick="selectFilter('${item.replace(/'/g,"\\'")}')">${item}</div>`
+  ).join("");
+}
+function selectFilter(val) { activeFilter = activeFilter === val ? null : val; buildFilters(); render(); }
+function socialIcons(s) {
+  const out = [];
+  if (s.ig) out.push(`<a class="social-link social-link--ig" href="${s.ig}" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>`);
+  if (s.fb) out.push(`<a class="social-link social-link--fb" href="${s.fb}" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>`);
+  return out.join("");
+}
+function locationLine(l) {
+  const tel = l.phone ? `<a class="card-phone" href="tel:${l.phone.replace(/\D/g,"")}"><i class="ti ti-phone" aria-hidden="true"></i> ${l.phone}</a>` : "";
+  return `<div class="loc-line"><span class="loc-zone">${l.zone}</span><span class="loc-addr-row"><span class="loc-addr">${l.address}</span>${tel}</span></div>`;
+}
+function render() {
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  let results = restaurants;
+  if (activeFilter) {
+    if (activeTab === "hood") results = results.filter(r => r.locations.some(l => l.zone === activeFilter));
+    else results = results.filter(r => r.types.includes(activeFilter));
+  }
+  if (q) results = results.filter(r =>
+    r.name.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) ||
+    r.types.some(t => t.toLowerCase().includes(q)) ||
+    r.locations.some(l => l.zone.toLowerCase().includes(q) || l.address.toLowerCase().includes(q))
+  );
+  document.getElementById("meta").textContent = `${results.length} restaurant${results.length !== 1 ? "s" : ""}`;
+  const cards = document.getElementById("cards");
+  if (!results.length) { cards.innerHTML = `<div class="empty">No restaurants match — try a different filter or search.</div>`; return; }
+  cards.innerHTML = results.map(r => {
+    const shown = (activeTab === "hood" && activeFilter) ? r.locations.filter(l => l.zone === activeFilter) : r.locations;
+    const cu = cuisineOf(r.types[0]);
+    const cuT = TINT[cu.c];
+    const tags = r.types.map(t => { const ti = tintOf(t); return `<span class="tag" style="background:${ti.bg};color:${ti.fg}">${t}</span>`; }).join("");
+    return `
+    <div class="card">
+      <div class="card-ico" style="background:${cuT.bg};color:${cuT.fg}"><i class="ti ${cu.i}"></i></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name"><a href="${r.url}" target="_blank">${r.name}</a></div>
+          <div class="tag-row">${tags}</div>
+        </div>
+        <div class="card-locations">${shown.map(locationLine).join("")}</div>
+        <div class="card-desc">${r.desc}</div>
+        <div class="card-footer">
+          <div class="footer-left">
+            <a class="website-link" href="${r.url}" target="_blank"><i class="ti ti-world" aria-hidden="true"></i> ${domain(r.url)}</a>
+            <a class="reviews-link" href="${gmaps(r)}" target="_blank"><i class="ti ti-brand-google" aria-hidden="true"></i> Reviews <i class="ti ti-external-link" style="font-size:12px" aria-hidden="true"></i></a>
+          </div>
+          <div class="social-links">${socialIcons(r.social)}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+}
+buildFilters(); render();
+</script>
+</body>
+</html>

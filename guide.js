@@ -95,7 +95,7 @@
     '  <div class="guide-mark"><i class="ti ti-leaf"></i></div>' +
     '  <div>' +
     '    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>' +
-    '    <div class="subtitle">30 all-vegan spots · Western Washington</div>' +
+    '    <div class="subtitle">28 all-vegan spots · Western Washington</div>' +
     '  </div>' +
     '</div>' +
     '<div class="save-line" id="svg-guide-save">' +
@@ -111,7 +111,7 @@
     '<div class="filter-row" id="svg-guide-filters"></div>' +
     '<div class="results-meta" id="svg-guide-meta"></div>' +
     '<div id="svg-guide-cards"></div>' +
-    '<div class="guide-foot">Last updated July 8, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
+    '<div class="guide-foot">Last updated July 12, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
 
   function boot() {
     var root = document.getElementById('vegan-restaurant-guide');
@@ -182,17 +182,21 @@
       { name: "Araya's Place", url: "https://www.arayasplace.com", types: ["Thai"], social: { ig: "https://instagram.com/arayasplace", fb: "https://facebook.com/ArayasVegetarianPlace" }, desc: "Classic Thai — Pad Thai, Massaman Banana Curry, Avocado Curry. Two locations.", locations: [
         { zone: "U-District", address: "5240 University Way NE, Seattle, WA 98105", phone: "(206) 524-4332" },
         { zone: "Eastside", address: "10246 Main St Ste C, Bellevue, WA 98004", phone: "(425) 454-2440" } ] },
-      { name: "Ba Bar Green", url: "https://babargreen.com", types: ["Asian Fusion"], social: { ig: "https://instagram.com/babargreenseattle" }, desc: "Easygoing plant-based Asian spot with creative bowls, noodles, banh mi, pho, curries, and snacks inspired by Vietnamese, Malaysian, Korean, and Singaporean flavors.", locations: [
-        { zone: "South Lake Union", address: "500 Terry Ave N, Seattle, WA 98109", phone: "(206) 582-2131" } ] },
+      { name: "The Bayside Cafe", url: "https://thebaysidecafe.com/", types: ["Café", "Bar"], social: { ig: "https://instagram.com/the_bayside_cafe", fb: "https://www.facebook.com/thebaysidecafeeverett/" }, desc: "100% plant-based café in downtown Everett — burgers, hot dogs, sandwiches, nachos — with craft beers. Best Vegan Restaurant 2024.", locations: [
+        { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] },
       { name: "Box Bar", url: "https://boxbarseattle.com", types: ["American", "Bar"], social: {}, desc: "Casual plant-based brunch, dinner, and crafted cocktails. 21+ only.", locations: [
         { zone: "West Seattle", address: "5401 California Ave SW, Seattle, WA", phone: "(206) 432-9554" } ] },
       { name: "Brown Sugar Baking Co.", url: "https://brownsugarbakingcompany.com", types: ["Bakery"], social: { ig: "https://instagram.com/brownsugarbaking", fb: "https://facebook.com/BSBCO" }, desc: "Black woman-owned vegan bakery. Cinnamon buns, brownies, custom event cakes.", locations: [
         { zone: "Capitol Hill / Central District", address: "308 22nd Ave S Ste 101, Seattle, WA 98144", phone: "(206) 556-0749" } ] },
       { name: "Cafe Red", url: "https://caferedseattle.com", types: ["Café"], social: { ig: "https://instagram.com/caferedseattle", fb: "https://facebook.com/caferedseattle" }, desc: "All-vegan café with artisanal coffee, breakfast sandwiches, burritos, mac & cheese.", locations: [
         { zone: "Rainier Valley", address: "7148 Martin Luther King Jr Way S, Seattle, WA 98118", phone: "(206) 257-1267" } ] },
+      { name: "Cafe Wylde", url: "https://www.cafewylde.com/", types: ["Café"], social: { ig: "https://instagram.com/cafewylde", fb: "https://www.facebook.com/CafeWylde/" }, desc: "100% vegan organic café in downtown Everett. Smoothies, juices, sandwiches, tacos, burritos, grain bowls, and raw cheesecake desserts.", locations: [
+        { zone: "Snohomish County", address: "2918 Hoyt Ave Suite 101, Everett, WA 98201", phone: "(425) 374-3877" } ] },
       { name: "Chu Minh Tofu & Vegan Deli", url: "https://chuminhtofu.com", types: ["Vietnamese"], social: { ig: "https://instagram.com/chuminhtofu", fb: "https://facebook.com/chuminhtofu" }, desc: "Vietnamese deli, all-you-can-eat buffet, pho, banh mi. Two locations.", locations: [
         { zone: "Capitol Hill / Central District", address: "1043 S Jackson St, Seattle, WA 98104", phone: "(206) 723-6095" },
         { zone: "Rainier Valley", address: "6754 Martin Luther King Jr Way S, Seattle, WA 98118", phone: "(206) 457-4469" } ] },
+      { name: "Cinnaholic", url: "https://www.cinnaholicseattle.com/", types: ["Bakery"], social: { ig: "https://instagram.com/cinnaholicseattle", fb: "https://www.facebook.com/Cinnaholic.Seattle.CapitolHill/" }, desc: "100% vegan cinnamon roll bakery. Customize rolls with frosting flavors (cream cheese, almond, lemon, marshmallow) and toppings. Featured on Shark Tank.", locations: [
+        { zone: "Capitol Hill / Central District", address: "816 E Pike St, Seattle, WA 98122", phone: "(206) 922-3253" } ] },
       { name: "Dough Joy Donuts", url: "https://www.doughjoydonuts.com", types: ["Bakery"], social: { ig: "https://instagram.com/doughjoydonuts", fb: "https://facebook.com/doughjoydonuts" }, desc: "Colorful vegan donuts with creative rotating flavors and espresso at each location.", locations: [
         { zone: "West Seattle", address: "4310 SW Oregon St, Seattle, WA 98116", phone: "(323) 739-8112" },
         { zone: "Ballard", address: "2052 NW Market St, Seattle, WA 98107", phone: "" } ] },
@@ -206,11 +210,17 @@
         { zone: "Georgetown", address: "5501 Airport Way S Ste B, Seattle, WA 98108", phone: "(206) 402-5367" } ] },
       { name: "Harvest Beat", url: "https://www.harvestbeat.com", types: ["Fine Dining"], social: { ig: "https://instagram.com/harvestbeat_", fb: "https://facebook.com/HarvestBeatSutra" }, desc: "Seasonal 5-course prix-fixe tasting menu built around Pacific Northwest produce. Reservations strongly recommended; single evening seating.", locations: [
         { zone: "Fremont & Wallingford", address: "1711 N 45th St, Seattle, WA 98103", phone: "(206) 547-1348" } ] },
+      { name: "Juicy J's Smoked Burgers", url: "https://smokedburgers.com", types: ["American", "Fast Casual"], social: { ig: "https://instagram.com/juicyjsmokedburgers", fb: "https://www.facebook.com/104159695794456" }, desc: "Family-owned 100% plant-based burger shack on the Poulsbo waterfront — in-house smoked patties, Western BBQ Bacon Cheeseburger, and chili cheese fries. Closed Mondays.", locations: [
+        { zone: "Kitsap Peninsula", address: "18779 Front St NE, Poulsbo, WA 98370", phone: "(360) 626-1934" } ] },
       { name: "Kati Vegan Thai", url: "https://kativeganthai.com", types: ["Thai"], social: { ig: "https://instagram.com/kativeganthai" }, desc: "Cauliflower Bombs, Devil Wings, Khao Soi curry, Old-Style Pad Thai.", locations: [
         { zone: "South Lake Union", address: "1190 Thomas St, Seattle, WA 98109", phone: "(206) 900-7954" },
         { zone: "Eastside", address: "12540 120th Ave NE Ste 110, Kirkland, WA 98034", phone: "(323) 989-1968" } ] },
       { name: "Life on Mars", url: "https://lifeonmarsseattle.com", types: ["American", "Bar"], social: { ig: "https://instagram.com/lifeonmarsseattle" }, desc: "Plant-based cocktail bar with creative small plates and a vinyl vibe. 21+ only.", locations: [
         { zone: "Capitol Hill / Central District", address: "722 E Pike St, Seattle, WA 98122", phone: "(206) 323-9166" } ] },
+      { name: "Moe Vegan", url: "https://www.moevegan.com/", types: ["Soul Food"], social: { ig: "https://instagram.com/moevegan", fb: "https://www.facebook.com/100057535085849/" }, desc: "Family-owned 100% vegan soul food. Bold comfort food classics reimagined plant-based. Open Thu–Sun.", locations: [
+        { zone: "South King County", address: "23325 Pacific Hwy S, Kent, WA 98032", phone: "(206) 886-4471" } ] },
+      { name: "Nuttea", url: "https://nuttea-seattle.com", types: ["Bubble Tea"], social: { ig: "https://instagram.com/nuttea_seattle" }, desc: "Taiwanese nut-mylk boba — 100% vegan milk teas made with house-ground nut mylk, nut-cream-topped teas, fruit teas, and vegan macarons.", locations: [
+        { zone: "Eastside", address: "16180 NE 80th St Suite 100, Redmond, WA 98052", phone: "(425) 305-5636" } ] },
       { name: "Pi Vegan Pizzeria", url: "https://www.pizzapivegan.com", types: ["Pizza"], social: { ig: "https://instagram.com/pivegan", fb: "https://facebook.com/veganpizzapi" }, desc: "Mac & Cheese Pizza, Buffalo Chik'n, Artichokey Hokey Pokey. Calzones + wings.", locations: [
         { zone: "U-District", address: "5301 Roosevelt Way NE, Seattle, WA 98105", phone: "(206) 343-1415" } ] },
       { name: "Plantiful Superfoods", url: "https://www.plantiful.us", types: ["Café", "Fast Casual"], social: { ig: "https://instagram.com/plantifulsuperfoods", fb: "https://facebook.com/eatplantiful" }, desc: "Smoothies, superfood bowls, burgers, pizzas, acai bowls. Four locations.", locations: [
@@ -218,12 +228,14 @@
         { zone: "South Lake Union", address: "340 Westlake Ave N, Seattle, WA 98109", phone: "(206) 687-6269" },
         { zone: "Downtown / Belltown", address: "1405 1st Ave, Seattle, WA 98101", phone: "(206) 567-8979" },
         { zone: "Snohomish County", address: "19723 Highway 99 Ste D, Lynnwood, WA 98036", phone: "(425) 276-6999" } ] },
+      { name: "Quickie Too", url: "https://quickietoo.com", types: ["Soul Food"], social: { ig: "https://instagram.com/quickietootacoma", fb: "https://www.facebook.com/Quickie-Too-210575445619965" }, desc: "Tacoma's Hilltop vegan soul food institution — hearty burgers, wraps, and sandwiches plus pizza, salads, milkshakes, and sweet potato pie.", locations: [
+        { zone: "Tacoma / Pierce County", address: "1324 Martin Luther King Jr Way, Tacoma, WA 98405", phone: "(253) 572-4549" } ] },
       { name: "Rojo's Mexican Food", url: "https://www.rojosmexicanfood.com", types: ["Mexican"], social: { ig: "https://instagram.com/rojosmexicanfood" }, desc: "Fully vegan tacos, burritos, tortas, quesadillas. Fast-casual counter service.", locations: [
         { zone: "Downtown / Belltown", address: "217 James St, Seattle, WA 98104", phone: "" } ] },
       { name: "The Sushi Samurai", url: "https://thesushisamurai.com", types: ["Sushi"], social: { ig: "https://instagram.com/the.sushi.samurai" }, desc: "Creative plant-based sushi — inventive rolls, nigiri, and appetizers.", locations: [
         { zone: "Downtown / Belltown", address: "1817 Queen Anne Ave N, Seattle, WA 98109", phone: "(206) 766-0298" } ] },
-      { name: "Teapot Vegetarian House", url: "https://teapotvegetarianhouse.com", types: ["Pan-Asian"], social: { fb: "https://facebook.com/teapotvegetrian" }, desc: "Pan-Asian comfort food — dumplings, noodles, Kung Pao tofu, tofu cheesecake.", locations: [
-        { zone: "Eastside", address: "15230 NE 24th St, Redmond, WA 98052", phone: "(425) 373-1888" } ] },
+      { name: "Three Cats Coffee", url: "https://threecatscoffee.square.site", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
+        { zone: "Eastside", address: "17410 133rd Ave NE Ste 101, Woodinville, WA 98072", phone: "(360) 447-8341" } ] },
       { name: "Veggie Grill", url: "https://www.veggiegrill.com", types: ["Fast Casual"], social: { ig: "https://instagram.com/veggiegrill", fb: "https://facebook.com/veggiegrill" }, desc: "Burgers, sandwiches, bowls, salads. Go-to fast-casual vegan comfort food.", locations: [
         { zone: "Downtown / Belltown", address: "1427 4th Ave, Seattle, WA 98101", phone: "(206) 934-1144" },
         { zone: "U-District", address: "2681 NE University Village St, Seattle, WA 98105", phone: "(206) 962-5566" },
@@ -233,23 +245,7 @@
       { name: "Vital Creations", url: "https://vitalcreationsvegancafe.com", types: ["Café"], social: { ig: "https://instagram.com/vitalcreationsveganbistro" }, desc: "Vegan café and bistro with plant-based comfort food and creative daily specials.", locations: [
         { zone: "Fremont & Wallingford", address: "3601 Fremont Ave N Ste 207, Seattle, WA 98103", phone: "(206) 829-9619" } ] },
       { name: "Yaygit", url: "https://yaygit.com", types: ["Café"], social: { ig: "https://instagram.com/yaygit", fb: "https://facebook.com/yaygit" }, desc: "Gut-healthy juice bar — smoothies, cold-pressed juices, faux tuna sandwiches.", locations: [
-        { zone: "Ballard", address: "5309 22nd Ave NW Suite D, Seattle, WA 98107", phone: "" } ] },
-      { name: "Cinnaholic", url: "https://www.cinnaholicseattle.com/", types: ["Bakery"], social: { ig: "https://instagram.com/cinnaholicseattle", fb: "https://www.facebook.com/Cinnaholic.Seattle.CapitolHill/" }, desc: "100% vegan cinnamon roll bakery. Customize rolls with frosting flavors (cream cheese, almond, lemon, marshmallow) and toppings. Featured on Shark Tank.", locations: [
-        { zone: "Capitol Hill / Central District", address: "816 E Pike St, Seattle, WA 98122", phone: "(206) 922-3253" } ] },
-      { name: "Moe Vegan", url: "https://www.moevegan.com/", types: ["Soul Food"], social: { ig: "https://instagram.com/moevegan", fb: "https://www.facebook.com/100057535085849/" }, desc: "Family-owned 100% vegan soul food. Bold comfort food classics reimagined plant-based. Open Thu–Sun.", locations: [
-        { zone: "South King County", address: "23325 Pacific Hwy S, Kent, WA 98032", phone: "(206) 886-4471" } ] },
-      { name: "Cafe Wylde", url: "https://www.cafewylde.com/", types: ["Café"], social: { ig: "https://instagram.com/cafewylde", fb: "https://www.facebook.com/CafeWylde/" }, desc: "100% vegan organic café in downtown Everett. Smoothies, juices, sandwiches, tacos, burritos, grain bowls, and raw cheesecake desserts.", locations: [
-        { zone: "Snohomish County", address: "2918 Hoyt Ave Suite 101, Everett, WA 98201", phone: "(425) 374-3877" } ] },
-      { name: "The Bayside Cafe", url: "https://thebaysidecafe.com/", types: ["Café", "Bar"], social: { ig: "https://instagram.com/the_bayside_cafe", fb: "https://www.facebook.com/thebaysidecafeeverett/" }, desc: "100% plant-based café in downtown Everett — burgers, hot dogs, sandwiches, nachos — with craft beers. Best Vegan Restaurant 2024.", locations: [
-        { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] },
-      { name: "Quickie Too", url: "https://quickietoo.com", types: ["Soul Food"], social: { ig: "https://instagram.com/quickietootacoma", fb: "https://www.facebook.com/Quickie-Too-210575445619965" }, desc: "Tacoma's Hilltop vegan soul food institution — hearty burgers, wraps, and sandwiches plus pizza, salads, milkshakes, and sweet potato pie.", locations: [
-        { zone: "Tacoma / Pierce County", address: "1324 Martin Luther King Jr Way, Tacoma, WA 98405", phone: "(253) 572-4549" } ] },
-      { name: "Three Cats Coffee", url: "https://threecatscoffee.square.site", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
-        { zone: "Eastside", address: "17410 133rd Ave NE Ste 101, Woodinville, WA 98072", phone: "(360) 447-8341" } ] },
-      { name: "Nuttea", url: "https://nuttea-seattle.com", types: ["Bubble Tea"], social: { ig: "https://instagram.com/nuttea_seattle" }, desc: "Taiwanese nut-mylk boba — 100% vegan milk teas made with house-ground nut mylk, nut-cream-topped teas, fruit teas, and vegan macarons.", locations: [
-        { zone: "Eastside", address: "16180 NE 80th St Suite 100, Redmond, WA 98052", phone: "(425) 305-5636" } ] },
-      { name: "Juicy J's Smoked Burgers", url: "https://smokedburgers.com", types: ["American", "Fast Casual"], social: { ig: "https://instagram.com/juicyjsmokedburgers", fb: "https://www.facebook.com/104159695794456" }, desc: "Family-owned 100% plant-based burger shack on the Poulsbo waterfront — in-house smoked patties, Western BBQ Bacon Cheeseburger, and chili cheese fries. Closed Mondays.", locations: [
-        { zone: "Kitsap Peninsula", address: "18779 Front St NE, Poulsbo, WA 98370", phone: "(360) 626-1934" } ] }
+        { zone: "Ballard", address: "5309 22nd Ave NW Suite D, Seattle, WA 98107", phone: "" } ] }
     ];
 
     // Cuisine -> plant-based / neutral icon + color family (NO animal or meat icons)
@@ -264,8 +260,6 @@
       "Thai":         { i: "ti-soup", c: "blue" },
       "Vietnamese":   { i: "ti-bowl", c: "blue" },
       "Chinese":      { i: "ti-bowl", c: "blue" },
-      "Pan-Asian":    { i: "ti-bowl", c: "blue" },
-      "Asian Fusion": { i: "ti-bowl", c: "blue" },
       "Sushi":        { i: "ti-bowl", c: "blue" },
       "Mexican":      { i: "ti-pepper", c: "clay" },
       "Pizza":        { i: "ti-pizza", c: "clay" },
