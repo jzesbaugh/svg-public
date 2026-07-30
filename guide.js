@@ -95,7 +95,7 @@
     '  <div class="guide-mark"><i class="ti ti-leaf"></i></div>' +
     '  <div>' +
     '    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>' +
-    '    <div class="subtitle">28 all-vegan spots · Western Washington</div>' +
+    '    <div class="subtitle">29 all-vegan spots · Western Washington</div>' +
     '  </div>' +
     '</div>' +
     '<div class="save-line" id="svg-guide-save">' +
@@ -111,7 +111,7 @@
     '<div class="filter-row" id="svg-guide-filters"></div>' +
     '<div class="results-meta" id="svg-guide-meta"></div>' +
     '<div id="svg-guide-cards"></div>' +
-    '<div class="guide-foot">Last updated July 12, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
+    '<div class="guide-foot">Last updated July 29, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
 
   function boot() {
     var root = document.getElementById('vegan-restaurant-guide');
@@ -202,6 +202,8 @@
         { zone: "Ballard", address: "2052 NW Market St, Seattle, WA 98107", phone: "" } ] },
       { name: "El Borracho", url: "https://www.elborracho.co", types: ["Mexican", "Bar"], social: { ig: "https://instagram.com/elborrachoseattle" }, desc: "Lively plant-based Mexican bar — tacos, burritos, nachos near Pike Place Market. All ages before 5pm; 21+ only after 5pm.", locations: [
         { zone: "Downtown / Belltown", address: "1521 1st Ave, Seattle, WA 98101", phone: "(206) 538-0144" } ] },
+      { name: "El Cerro", url: "https://www.elcerro.net", types: ["Café"], social: { ig: "https://instagram.com/elcerro.seattle", fb: "https://www.facebook.com/elcerroseattle" }, desc: "100% plant-based Caribbean-inspired coffee house — classic espresso drinks, Caribbean house drinks, single-origin Puerto Rican coffee, and vegan pastries from La Antillana and Pika Pantry.", locations: [
+        { zone: "Capitol Hill / Central District", address: "1316 E Pike St, Seattle, WA 98122", phone: "" } ] },
       { name: "Frankie & Jo's", url: "https://frankieandjos.com", types: ["Ice Cream"], social: { ig: "https://instagram.com/frankieandjos" }, desc: "Creamy inventive plant-based ice cream with seasonal rotating flavors. Three Seattle scoop shops.", locations: [
         { zone: "Capitol Hill / Central District", address: "1010 E Union St, Seattle, WA 98122", phone: "(206) 557-4603" },
         { zone: "Ballard", address: "1411 NW 70th St, Seattle, WA 98117", phone: "(206) 257-1676" },
