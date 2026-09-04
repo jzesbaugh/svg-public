@@ -45,6 +45,37 @@
   }
   .demo-note a { color: #c4603d; }
   .demo-note a:hover { text-decoration: none; }
+
+  /* Install instructions. Collapsed by default: the point of this page is the working guide,
+     and someone who wants the code is willing to click once for it. <details> rather than a
+     scripted toggle so it needs no JavaScript and stays keyboard-accessible for free. */
+  .install { margin-top: 10px; border-top: 1px solid #ecdcc6; padding-top: 9px; }
+  .install > summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #8a5a33;
+    list-style: revert;
+  }
+  .install > summary:hover { color: #c4603d; }
+  .install .step { margin: 11px 0 5px; }
+  .install pre {
+    background: #fff;
+    border: 1px solid #e3d9c6;
+    border-radius: 7px;
+    padding: 9px 11px;
+    margin: 0 0 4px;
+    overflow-x: auto;
+  }
+  .install pre code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+    color: #23201a;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .install .fineprint { margin-top: 10px; font-size: 12px; color: #8a7a63; }
+
   .repo-footer {
     max-width: 720px;
     margin: 0 auto;
@@ -72,6 +103,26 @@
     <strong>This is a demo page</strong> for the widget hosted in this repository. The maintained
     guide lives at <a href="https://www.seattlevegangroup.org/guide">seattlevegangroup.org/guide</a>.
     Corrections and additions: <a href="mailto:info@seattlevegangroup.org">info@seattlevegangroup.org</a>.
+
+    <details class="install">
+      <summary>Put this guide on your own site — two lines of HTML</summary>
+
+      <div class="step"><strong>1.</strong> Put a container where you want the guide to appear:</div>
+<pre><code>&lt;div id="vegan-restaurant-guide"&gt;Loading…&lt;/div&gt;</code></pre>
+
+      <div class="step"><strong>2.</strong> Load the script once, anywhere on the page:</div>
+<pre><code>&lt;script src="https://cdn.jsdelivr.net/gh/jzesbaugh/svg-public@main/guide.js"&gt;&lt;/script&gt;</code></pre>
+
+      <div class="fineprint">
+        That's it — no build step, no dependencies, and all styles stay scoped to the container.
+        Keep the placeholder text inside the div; some CMS editors delete empty
+        <code>&lt;div&gt;</code> elements on save. Full notes on caching, pinning a version and
+        updating the data:
+        <a href="https://github.com/jzesbaugh/svg-public#add-it-to-your-own-website">embedding instructions</a>.
+        Building one for a different city:
+        <a href="https://github.com/jzesbaugh/svg-public/blob/main/MAKE-YOUR-OWN.md">MAKE-YOUR-OWN.md</a>.
+      </div>
+    </details>
   </div>
 </div>
 
