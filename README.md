@@ -2,7 +2,10 @@
 
 A lightweight, embeddable directory of 100% vegan restaurants in the greater Seattle area, from Capitol Hill to Everett. It's a single JavaScript file with no build step, no dependencies, and no tracking. Drop it on any web page and it renders a searchable, filterable guide.
 
-**Live:** https://www.seattlevegangroup.org/guide
+**Live:** https://www.seattlevegangroup.org/guide — the maintained guide, on the Seattle Vegan Group site.
+
+**Demo:** https://jzesbaugh.github.io/svg-public/ — this repository's `guide.js` running on a page of its own, so you can see exactly what you'd be embedding before you embed it. It loads the file from this repo directly, so it always reflects the current version.
+
 Maintained by [Seattle Vegan Group](https://www.seattlevegangroup.org). Free to use and adapt (see [License](#license)).
 
 ## What it does

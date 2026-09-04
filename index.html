@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seattle Vegan Restaurant Guide — live demo</title>
+<meta name="description" content="Live demo of the Seattle Vegan Restaurant Guide widget: a searchable, filterable directory of 100% vegan restaurants in the greater Seattle area. No build step, no dependencies, no tracking.">
+
+<!-- The maintained guide lives on the Seattle Vegan Group site. This page is a demo of the
+     widget's source, so it points search engines at the real one rather than competing with it. -->
+<link rel="canonical" href="https://www.seattlevegangroup.org/guide">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Seattle Vegan Restaurant Guide — live demo">
+<meta property="og:description" content="A searchable directory of 100% vegan restaurants in the greater Seattle area. One JavaScript file, no dependencies.">
+<meta property="og:url" content="https://jzesbaugh.github.io/svg-public/">
+<meta property="og:image" content="https://jzesbaugh.github.io/svg-public/icon-512.png">
+<meta name="twitter:card" content="summary">
+
+<style>
+  /* Deliberately minimal. guide.js injects its own stylesheet, icon font, manifest,
+     apple-touch-icon and theme-color, and renders its own heading and footer — so this
+     page supplies only the frame around it. Colors match the widget's palette so the
+     page doesn't seam where the widget begins. */
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: #faf6ef;
+    color: #23201a;
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  .demo-note {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7a4a28;
+  }
+  .demo-note .box {
+    background: #fbf0e3;
+    border: 1px solid #ecdcc6;
+    border-radius: 10px;
+    padding: 10px 14px;
+  }
+  .demo-note a { color: #c4603d; }
+  .demo-note a:hover { text-decoration: none; }
+  .repo-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem 2.5rem;
+    font-size: 12px;
+    line-height: 1.9;
+    color: #9a8f7c;
+  }
+  .repo-footer a { color: #c4603d; text-decoration: none; }
+  .repo-footer a:hover { text-decoration: underline; }
+  .repo-footer code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    background: #fff;
+    border: 1px solid #e3d9c6;
+    border-radius: 5px;
+    padding: 1px 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-note">
+  <div class="box">
+    <strong>This is a demo page</strong> for the widget hosted in this repository. The maintained
+    guide lives at <a href="https://www.seattlevegangroup.org/guide">seattlevegangroup.org/guide</a>.
+    Corrections and additions: <a href="mailto:info@seattlevegangroup.org">info@seattlevegangroup.org</a>.
+  </div>
+</div>
+
+<!-- guide.js finds this container and builds the guide inside it. The placeholder text is
+     deliberate: some CMS editors delete empty divs on save, and the README tells adopters to
+     keep it, so the demo models the documented usage rather than a tidier variant of it. -->
+<div id="vegan-restaurant-guide">Loading the vegan guide…</div>
+
+<div class="repo-footer">
+  Running <code>guide.js</code> straight from this repository, so this page always shows the
+  current file.<br>
+  <a href="https://github.com/jzesbaugh/svg-public">Code &amp; data on GitHub</a> ·
+  <a href="https://github.com/jzesbaugh/svg-public#add-it-to-your-own-website">Embed it on your site</a> ·
+  <a href="https://github.com/jzesbaugh/svg-public/blob/main/MAKE-YOUR-OWN.md">Make one for your own city</a><br>
+  Code MIT licensed. Restaurant data is public domain.
+</div>
+
+<!-- Relative path, not the jsDelivr URL: same repo, so the demo can never drift behind the
+     source, and it needs no cache purge after an edit. -->
+<script src="guide.js"></script>
+
+</body>
+</html>
