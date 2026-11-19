@@ -95,7 +95,7 @@
     '  <div class="guide-mark"><i class="ti ti-leaf"></i></div>' +
     '  <div>' +
     '    <h1>SEATTLE VEGAN RESTAURANT GUIDE</h1>' +
-    '    <div class="subtitle">29 all-vegan spots · Western Washington</div>' +
+    '    <div class="subtitle">28 all-vegan spots · Western Washington</div>' +
     '  </div>' +
     '</div>' +
     '<div class="save-line" id="svg-guide-save">' +
@@ -111,7 +111,7 @@
     '<div class="filter-row" id="svg-guide-filters"></div>' +
     '<div class="results-meta" id="svg-guide-meta"></div>' +
     '<div id="svg-guide-cards"></div>' +
-    '<div class="guide-foot">Last updated July 29, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
+    '<div class="guide-foot">Last updated November 19, 2026 · Spotted something off? <a href="mailto:info@seattlevegangroup.org">Email us a correction</a> · <a href="https://github.com/jzesbaugh/svg-public" target="_blank" rel="noopener">View the code &amp; data</a></div>';
 
   function boot() {
     var root = document.getElementById('vegan-restaurant-guide');
@@ -182,11 +182,9 @@
       { name: "Araya's Place", url: "https://www.arayasplace.com", types: ["Thai"], social: { ig: "https://instagram.com/arayasplace", fb: "https://facebook.com/ArayasVegetarianPlace" }, desc: "Classic Thai — Pad Thai, Massaman Banana Curry, Avocado Curry. Two locations.", locations: [
         { zone: "U-District", address: "5240 University Way NE, Seattle, WA 98105", phone: "(206) 524-4332" },
         { zone: "Eastside", address: "10246 Main St Ste C, Bellevue, WA 98004", phone: "(425) 454-2440" } ] },
-      { name: "The Bayside Cafe", url: "https://thebaysidecafe.com/", types: ["Café", "Bar"], social: { ig: "https://instagram.com/the_bayside_cafe", fb: "https://www.facebook.com/thebaysidecafeeverett/" }, desc: "100% plant-based café in downtown Everett — burgers, hot dogs, sandwiches, nachos — with craft beers. Best Vegan Restaurant 2024.", locations: [
-        { zone: "Snohomish County", address: "2913 West Marine View Dr, Everett, WA 98201", phone: "(425) 418-0640" } ] },
       { name: "Box Bar", url: "https://boxbarseattle.com", types: ["American", "Bar"], social: {}, desc: "Casual plant-based brunch, dinner, and crafted cocktails. 21+ only.", locations: [
         { zone: "West Seattle", address: "5401 California Ave SW, Seattle, WA", phone: "(206) 432-9554" } ] },
-      { name: "Brown Sugar Baking Co.", url: "https://brownsugarbakingcompany.com", types: ["Bakery"], social: { ig: "https://instagram.com/brownsugarbaking", fb: "https://facebook.com/BSBCO" }, desc: "Black woman-owned vegan bakery. Cinnamon buns, brownies, custom event cakes.", locations: [
+      { name: "Brown Sugar Baking Co.", url: "https://brownsugarbakingcompany.com", types: ["Bakery"], social: { ig: "https://instagram.com/brownsugarbaking", fb: "https://facebook.com/BSBCO" }, desc: "Black woman-owned vegan bakery. Cinnamon buns, brownies, custom event cakes. Order only for now: no walk-in storefront. Order online or call for pickup or delivery.", locations: [
         { zone: "Capitol Hill / Central District", address: "308 22nd Ave S Ste 101, Seattle, WA 98144", phone: "(206) 556-0749" } ] },
       { name: "Cafe Red", url: "https://caferedseattle.com", types: ["Café"], social: { ig: "https://instagram.com/caferedseattle", fb: "https://facebook.com/caferedseattle" }, desc: "All-vegan café with artisanal coffee, breakfast sandwiches, burritos, mac & cheese.", locations: [
         { zone: "Rainier Valley", address: "7148 Martin Luther King Jr Way S, Seattle, WA 98118", phone: "(206) 257-1267" } ] },
@@ -221,10 +219,14 @@
         { zone: "Capitol Hill / Central District", address: "722 E Pike St, Seattle, WA 98122", phone: "(206) 323-9166" } ] },
       { name: "Moe Vegan", url: "https://www.moevegan.com/", types: ["Soul Food"], social: { ig: "https://instagram.com/moevegan", fb: "https://www.facebook.com/100057535085849/" }, desc: "Family-owned 100% vegan soul food. Bold comfort food classics reimagined plant-based. Open Thu–Sun.", locations: [
         { zone: "South King County", address: "23325 Pacific Hwy S, Kent, WA 98032", phone: "(206) 886-4471" } ] },
-      { name: "Nuttea", url: "https://nuttea-seattle.com", types: ["Bubble Tea"], social: { ig: "https://instagram.com/nuttea_seattle" }, desc: "Taiwanese nut-mylk boba — 100% vegan milk teas made with house-ground nut mylk, nut-cream-topped teas, fruit teas, and vegan macarons.", locations: [
-        { zone: "Eastside", address: "16180 NE 80th St Suite 100, Redmond, WA 98052", phone: "(425) 305-5636" } ] },
+      { name: "Next Level Veggie Grill", url: "https://www.nextlevelvg.com", types: ["Fast Casual"], social: { ig: "https://instagram.com/nextlevelvg", fb: "https://www.facebook.com/NextLevelVeggieGrill" }, desc: "Burgers, sandwiches, bowls, salads. Go-to fast-casual vegan comfort food.", locations: [
+        { zone: "Downtown / Belltown", address: "1427 4th Ave, Seattle, WA 98101", phone: "(206) 934-1144" },
+        { zone: "U-District", address: "2681 NE University Village St, Seattle, WA 98105", phone: "(206) 962-5566" },
+        { zone: "Ballard", address: "1401 NW 46th St Suite 126, Seattle, WA 98107", phone: "(206) 800-6090" } ] },
       { name: "Pi Vegan Pizzeria", url: "https://www.pizzapivegan.com", types: ["Pizza"], social: { ig: "https://instagram.com/pivegan", fb: "https://facebook.com/veganpizzapi" }, desc: "Mac & Cheese Pizza, Buffalo Chik'n, Artichokey Hokey Pokey. Calzones + wings.", locations: [
         { zone: "U-District", address: "5301 Roosevelt Way NE, Seattle, WA 98105", phone: "(206) 343-1415" } ] },
+      { name: "The Pizza Resistance", url: "https://www.eatvegan.pizza", types: ["Pizza"], social: { ig: "https://instagram.com/thepizzaresistance", fb: "https://www.facebook.com/ThePizzaResistance" }, desc: "100% plant-based sourdough pizza. Margherita, Mac and Cheeze, Tropical Vacation, seasonal pies, and gluten-free Wingz. Takeout and delivery only (no seating), Fri-Sun from Cap Hill Kitchens.", locations: [
+        { zone: "Capitol Hill / Central District", address: "1525 13th Ave, Seattle, WA 98122", phone: "" } ] },
       { name: "Plantiful Superfoods", url: "https://www.plantiful.us", types: ["Café", "Fast Casual"], social: { ig: "https://instagram.com/plantifulsuperfoods", fb: "https://facebook.com/eatplantiful" }, desc: "Smoothies, superfood bowls, burgers, pizzas, acai bowls. Four locations.", locations: [
         { zone: "Capitol Hill / Central District", address: "734 12th Ave, Seattle, WA 98122", phone: "(206) 829-6868" },
         { zone: "South Lake Union", address: "340 Westlake Ave N, Seattle, WA 98109", phone: "(206) 687-6269" },
@@ -236,15 +238,11 @@
         { zone: "Downtown / Belltown", address: "217 James St, Seattle, WA 98104", phone: "" } ] },
       { name: "The Sushi Samurai", url: "https://thesushisamurai.com", types: ["Sushi"], social: { ig: "https://instagram.com/the.sushi.samurai" }, desc: "Creative plant-based sushi — inventive rolls, nigiri, and appetizers.", locations: [
         { zone: "Downtown / Belltown", address: "1817 Queen Anne Ave N, Seattle, WA 98109", phone: "(206) 766-0298" } ] },
-      { name: "Three Cats Coffee", url: "https://threecatscoffee.square.site", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
+      { name: "Three Cats Coffee", url: "https://www.threecatscoffee.com", types: ["Café"], social: { ig: "https://instagram.com/threecatscoffee.us", fb: "https://www.facebook.com/p/Three-Cats-Coffee-61566008684920/" }, desc: "100% vegan coffee shop inside Woodinville Bodega — specialty lattes, breakfast burritos and sandwiches, and a rotating case of vegan pastries and macarons.", locations: [
         { zone: "Eastside", address: "17410 133rd Ave NE Ste 101, Woodinville, WA 98072", phone: "(360) 447-8341" } ] },
-      { name: "Veggie Grill", url: "https://www.veggiegrill.com", types: ["Fast Casual"], social: { ig: "https://instagram.com/veggiegrill", fb: "https://facebook.com/veggiegrill" }, desc: "Burgers, sandwiches, bowls, salads. Go-to fast-casual vegan comfort food.", locations: [
-        { zone: "Downtown / Belltown", address: "1427 4th Ave, Seattle, WA 98101", phone: "(206) 934-1144" },
-        { zone: "U-District", address: "2681 NE University Village St, Seattle, WA 98105", phone: "(206) 962-5566" },
-        { zone: "Ballard", address: "1401 NW 46th St Suite 126, Seattle, WA 98107", phone: "(206) 800-6090" } ] },
       { name: "Veggie Life", url: "https://www.veggielifeseattle.com", types: ["Chinese"], social: { fb: "https://www.facebook.com/profile.php?id=61576880651955" }, desc: "Plant-based Chinese restaurant with Vegetarian Peking Duck, Tofu Clay Pot, Kung Pao Tofu, General Tso's Mushrooms, and traditional noodle and rice dishes.", locations: [
-        { zone: "Eastside", address: "8518 122nd Ave NE, Kirkland, WA 98033", phone: "(206) 817-7467" } ] },
-      { name: "Vital Creations", url: "https://vitalcreationsvegancafe.com", types: ["Café"], social: { ig: "https://instagram.com/vitalcreationsveganbistro" }, desc: "Vegan café and bistro with plant-based comfort food and creative daily specials.", locations: [
+        { zone: "Eastside", address: "8518 122nd Ave NE, Kirkland, WA 98033", phone: "(425) 822-9982" } ] },
+      { name: "Vital Creations", url: "https://vitalcreationsveganbistro.com", types: ["Café"], social: { ig: "https://instagram.com/vitalcreationsveganbistro" }, desc: "Vegan café and bistro with plant-based comfort food and creative daily specials.", locations: [
         { zone: "Fremont & Wallingford", address: "3601 Fremont Ave N Ste 207, Seattle, WA 98103", phone: "(206) 829-9619" } ] },
       { name: "Yaygit", url: "https://yaygit.com", types: ["Café"], social: { ig: "https://instagram.com/yaygit", fb: "https://facebook.com/yaygit" }, desc: "Gut-healthy juice bar — smoothies, cold-pressed juices, faux tuna sandwiches.", locations: [
         { zone: "Ballard", address: "5309 22nd Ave NW Suite D, Seattle, WA 98107", phone: "" } ] }
